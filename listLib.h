@@ -24,6 +24,8 @@ Node *addBeforeNode(Node *start, int data, int d);
 
 Node *addAfterNode(Node *start, int data, int d);
 
+Node *deleteNode(Node *start, int data);
+
 void displayList(Node *start);
 
 #endif

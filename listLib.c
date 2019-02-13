@@ -167,6 +167,43 @@ Node *addBeforeNode(Node *start, int data, int d)
   return start;
 }
 
+Node *deleteNode(Node *start, int data)
+{
+  Node *temp = NULL,*itr;
+  uint8_t flag = 0;
+  if(start->data ==  data)
+  {
+    temp = start;
+    start = start->next;
+    free(temp);
+    printf("successfully deleted 1st node\n");
+    return start;
+  }
+  itr = start;
+  while(itr->next != NULL)
+  {
+    if(itr->next->data == data)
+    {
+      temp = itr->next;
+      itr->next = itr->next->next;
+      free(temp);
+      flag = 1;
+      break;
+    }
+    itr = itr->next;
+  }
+  if(flag == 1)
+  {
+    printf("successfully deleted node with data[%d] adrr:%p\n",data,temp);
+  }
+  else
+  {
+    printf("could not find data");
+  }
+  return start;
+}
+
+
 void displayList(Node *start)
 {
   if(start == NULL)

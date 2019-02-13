@@ -15,7 +15,8 @@ int main(void)
     printf("4. add in between\n");
     printf("5. add before\n");
     printf("6. add after\n");
-    printf("7. displayList\n");
+    printf("7. Delete Node\n");
+    printf("8. displayList\n");
     printf("0. EXIT\n");
     printf("\n==================================================\n");
 
@@ -63,6 +64,11 @@ int main(void)
         start = addAfterNode(start,data,d1);
         break;
       case 7:
+        printf("Enter data for node to be deleted:\n");
+        scanf("%d",&data);
+        start = deleteNode(start,data);
+        break;
+      case 8:
         displayList(start);
         break;
       case 0:
