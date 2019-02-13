@@ -33,7 +33,7 @@ Node *addAtEnd(Node *start, int data)
     start = temp;
     return start;
   }
-  
+
   itr = start;
 
   while((itr->next) != NULL)
@@ -43,6 +43,127 @@ Node *addAtEnd(Node *start, int data)
 
   temp = createNode(data);
   itr->next = temp;
+  return start;
+}
+
+Node *addInBetweenNodes(Node *start, int d1, int d2, int newData)
+{
+  if(start == NULL)
+  {
+    printf("LIST is EMPTY\n");
+    return start;
+  }
+  Node *temp;
+  Node *itr = start;
+  uint8_t flag = 0;
+  while(itr->next != NULL)
+  {
+    if((itr->data == d1) && (itr->next->data == d2))
+    {
+      temp = createNode(newData);
+      temp->next = itr->next;
+      itr->next = temp;
+      flag = 1;
+      break;
+    }
+    itr = itr->next;
+  }
+  if(flag == 1)
+  {
+    printf("Node[addr:%p] instered successfully between 2 nodes\n",temp);
+  }
+  else
+  {
+    printf("invalid input for node DATA\n");
+  }
+  return start;
+}
+
+Node *addAfterNode(Node *start, int data, int d)
+{
+  if(start == NULL)
+  {
+    printf("LIST IS EMPTY\n");
+    return start;
+  }
+
+  Node *itr, *temp;
+  itr = start;
+  uint8_t flag = 0;
+
+  while(itr->next != NULL)
+  {
+    if(itr->data == d)
+    {
+      temp = createNode(data);
+      temp->next = itr->next;
+      itr->next = temp;
+      flag = 1;
+      break;
+    }
+    itr = itr->next;
+  }
+
+  if(flag == 1)
+  {
+    printf("Node[addr:%p] successfully added after Node[addr:%p]\n",temp,itr);
+  }
+  else
+  {
+    if(itr->data == d)
+    {
+      temp = createNode(data);
+      itr->next = temp;
+      printf("Node[addr:%p] successfully added as final node after Node[addr:%p]\n",temp,itr);
+    }
+    else
+    {
+      printf("node not found\n");
+    }
+  }
+  return start;
+}
+
+Node *addBeforeNode(Node *start, int data, int d)
+{
+  if(start == NULL)
+  {
+    printf("LIST is EMPTY\n");
+    return start;
+  }
+
+  Node *temp, *itr;
+  if(start->data == d)
+  {
+    temp = createNode(data);
+    temp->next= start;
+    start = temp;
+    printf("Node[addr:%p] added before 1st Node[addr:%p]\n",temp,temp->next);
+    return start;
+  }
+
+  itr = start;
+  uint8_t flag  = 0;
+  while(itr->next != NULL)
+  {
+    if(itr->next->data == d)
+    {
+      temp = createNode(data);
+      temp->next = itr->next;
+      itr->next = temp;
+      flag  = 1;
+      break;
+    }
+    itr = itr->next;
+  }
+  if(flag == 0)
+  {
+    printf("Node not found.\n");
+  }
+  else
+  {
+    printf("Node[addr:%p] added before Node[addr:%p]\n",temp,temp->next);
+  }
   return start;
 }
 
