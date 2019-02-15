@@ -2,3 +2,4 @@
 
 1. Linked List
 2. Stack using arrays
+3. 1D Queue using Linked List
