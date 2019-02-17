@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/time.h>
 
 int *arr;
 
@@ -41,6 +42,7 @@ void quickSort(int *arr, int low, int high)
 int main(void)
 {
   int len;
+  struct timeval start,stop;
   scanf("%d",&len);
   arr = (int *)calloc(len,sizeof(*arr));
   printf("ENter arr elements\n");
@@ -48,12 +50,16 @@ int main(void)
   {
     scanf("%d",arr+itr);
   }
+
+  gettimeofday(&start,NULL);
   quickSort(arr,0,len-1);
+  gettimeofday(&stop,NULL);
 
   //display
   for(int itr = 0; itr < len; ++itr)
   {
     printf("arr[%d]:%d\n",itr,*(arr+itr));
   }
+  printf("Total time for sorting using quickSort algo:%lf usec\n",(double)(stop.tv_usec - start.tv_usec));
   return EXIT_SUCCESS;
 }
