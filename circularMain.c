@@ -27,7 +27,7 @@ int main(void)
         printf("Enter data:\n");
         scanf("%d",&data);
         last = create(data);
-        last->next = node;
+        last->next = last;
         break;
       case 2:
         printf("Enter data:\n");

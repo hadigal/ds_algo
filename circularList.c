@@ -77,10 +77,10 @@ Node *addAtPos(Node *last, int data, int pos)
 
   if(count < pos || last == NULL)
   {
-    printf("List is empty\n");
+    printf("Invalid Pos:%d\n", pos);
     return last;
   }
-  Node *new, *temp;
+  Node *new, *nodeItr;
   if(pos == 1)
   {
     new = create(data);
@@ -89,17 +89,19 @@ Node *addAtPos(Node *last, int data, int pos)
     return last;
   }
 
-  Node *nodeItr = last->next;
-
+  nodeItr = last->next; // pointer to start node
+  // itreating until the nodeItr points to (pos -1)th node
   for(int itr = 1; itr < pos -1 && nodeItr->next != last->next; ++itr)
   {
     nodeItr = nodeItr->next;
   }
 
+  // check for nodeItr is pointing to the 1st node again!!
   if(nodeItr != last->next)
   {
     new = create(data);
     new->next = nodeItr->next;
+    nodeItr->next = new;
   }
   else
   {
@@ -115,7 +117,9 @@ Node *delete(Node *last, int data)
     printf("List empty\n");
     return last;
   }
+
   Node *temp, *itr;
+
 
   itr = last->next;
 
@@ -128,6 +132,7 @@ Node *delete(Node *last, int data)
       last = NULL;
       return last;
     }
+
     temp = itr;
     last->next = temp->next;
     free(temp);
@@ -159,7 +164,7 @@ void display(Node *last)
   int itr = 1;
   do
   {
-    printf("Node[%d]: add:%p data:%d\n",itr,start,start->data);
+    printf("Node[%d]: add:%p data:%d\n",itr++,start,start->data);
     start = start->next;
   } while(start != last->next);
 }
