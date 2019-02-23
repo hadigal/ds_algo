@@ -1,13 +1,13 @@
 #include "circularList.h"
 
-Node *last = NULL;
+//Node *last = NULL;
 
 Node *create(int data)
 {
   Node *temp = (Node *)calloc(1,sizeof(*temp));
   temp->data = data;
   temp->next = NULL;
-  return last;
+  return temp;
 }
 
 Node *addAtBeginning(Node *last, int data)
@@ -89,7 +89,7 @@ Node *addAtPos(Node *last, int data, int pos)
     return last;
   }
 
-  Node *nodeItr = last->link;
+  Node *nodeItr = last->next;
 
   for(int itr = 1; itr < pos -1 && nodeItr->next != last->next; ++itr)
   {
@@ -108,7 +108,44 @@ Node *addAtPos(Node *last, int data, int pos)
   return last;
 }
 
-Node *delete(Node *last, int data);
+Node *delete(Node *last, int data)
+{
+  if(last == NULL)
+  {
+    printf("List empty\n");
+    return last;
+  }
+  Node *temp, *itr;
+
+  itr = last->next;
+
+  if(itr->data == data)
+  {
+    if(itr->next == itr)
+    {
+      temp = itr;
+      free(temp);
+      last = NULL;
+      return last;
+    }
+    temp = itr;
+    last->next = temp->next;
+    free(temp);
+    return last;
+  }
+
+  while(itr->next != last->next)
+  {
+    if(itr->next->data == data)
+    {
+      temp = itr->next;
+      itr->next = temp->next;
+      free(temp);
+      return last;
+    }
+    itr = itr->next;
+  }
+}
 
 void display(Node *last)
 {
