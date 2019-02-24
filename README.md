@@ -5,6 +5,7 @@
 2. Doubly Linked List
 3. Stack using arrays
 4. 1D Queue using Linked List
+5. Circular List
 
 ## Algorithms
 1. Recurrsion
