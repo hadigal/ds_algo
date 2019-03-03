@@ -26,6 +26,8 @@ Node *addAfterNode(Node *start, int data, int d);
 
 Node *deleteNode(Node *start, int data);
 
+Node *addAtPosition(Node *start, int data, int pos);
+
 void displayList(Node *start);
 
 #endif

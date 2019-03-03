@@ -1,11 +1,13 @@
 #include "listLib.h"
+//#include "sortLL.h"
+#include "mergeSortLL.h"
 
 int main(void)
 {
   unsigned int choice;
   Node *start = NULL, *node = NULL;
   int d1, d2;
-  int data;
+  int data,pos;
   do
   {
     printf("\n================== ENTER CHOICE ==================\n");
@@ -16,7 +18,9 @@ int main(void)
     printf("5. add before\n");
     printf("6. add after\n");
     printf("7. Delete Node\n");
-    printf("8. displayList\n");
+    printf("8. Add At Position\n");
+    printf("9. Sort List\n");
+    printf("10. displayList\n");
     printf("0. EXIT\n");
     printf("\n==================================================\n");
 
@@ -69,6 +73,18 @@ int main(void)
         start = deleteNode(start,data);
         break;
       case 8:
+        printf("Enter data\n");
+        scanf("%d",&data);
+        printf("Enter the position\n");
+        scanf("%d",&pos);
+        start = addAtPosition(start,data,pos);
+        break;
+      case 9:
+        //start = sortList(start);
+        mergeSort(&start);
+        printf("here\n");
+        break;
+      case 10:
         displayList(start);
         break;
       case 0:

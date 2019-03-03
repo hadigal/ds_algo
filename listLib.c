@@ -203,6 +203,32 @@ Node *deleteNode(Node *start, int data)
   return start;
 }
 
+Node *addAtPosition(Node *start, int data, int pos)
+{
+  int itr;
+  Node *temp = createNode(data);
+  if(pos == 1)
+  {
+    temp->next = start;
+    start = temp;
+    return start;
+  }
+  Node *nodeItr = start;
+  for(itr = 1; itr < pos-1 && nodeItr != NULL; ++itr)
+  {
+    nodeItr = nodeItr->next;
+  }
+  if(nodeItr == NULL)
+  {
+    printf("Invalid pos; %d position not available in list\n",pos);
+  }
+  else
+  {
+    temp->next = nodeItr->next;
+    nodeItr->next = temp;
+  }
+  return start;
+}
 
 void displayList(Node *start)
 {
