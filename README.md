@@ -6,6 +6,12 @@
 3. Stack using arrays
 4. 1D Queue using Linked List
 5. Circular List
+6. Merge Sort Singly LL
+6. Merge Sort Singly LL
+6. Merge Sort Singly LL
+6. Merge Sort Singly LL
+6. Merge Sort Singly LL
+6. Merge Sort Singly LL
 
 ## Algorithms
 1. Recurrsion

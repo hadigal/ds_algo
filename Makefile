@@ -8,7 +8,7 @@ TARGET_LIST = build.out
 SRC_STACK = ./stackLib.c ./stackArrMain.c
 STACK_TGT = stackArrTgt.out
 
-SRC = ./listLib.c ./mainList.c ./stackLib.c ./stackArrMain.c
+SRC = ./listLib.c ./mainList.c ./stackLib.c ./stackArrMain.c ./mergeSortLL.c
 
 OBJS = $(SRC:.c=.o)
 
@@ -27,7 +27,7 @@ build-list:
 build:
 		$(CC) -c $(CFLAGS) $(CPPFLAGS) $(SRC)
 		$(CC) $(CFLAGS) stackLib.o stackArrMain.o -o $(STACK_TGT)
-		$(CC) $(CFLAGS) listLib.o mainList.o -o $(TARGET_LIST)
+		$(CC) $(CFLAGS) listLib.o mergeSortLL.o mainList.o -o $(TARGET_LIST)
 
 .PHONY:clean
 clean:
