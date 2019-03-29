@@ -2,6 +2,7 @@
 
 int32_t top = -1;
 
+// create node for stack
 Stack *createNode(int val)
 {
   Stack *node = (Stack *)calloc(1,sizeof(*node));
@@ -10,9 +11,10 @@ Stack *createNode(int val)
   return node;
 }
 
+// push at head of stack
 void push(Stack **head, int val)
 {
-  printf("top:%d\n",top);
+  //printf("top:%d\n",top);
   if(top == SIZE)
   {
     printf("stack full\n");
@@ -21,6 +23,7 @@ void push(Stack **head, int val)
 
   Stack *node = createNode(val);
   ++top;
+  printf("top:%d\n",top);
   if(*head == NULL)
   {
     *head = node;
@@ -32,6 +35,7 @@ void push(Stack **head, int val)
   return;
 }
 
+// pop from  head of stack LIFO buffer
 int pop(Stack **head)
 {
   if(isEmpty(*head) == true)
@@ -49,6 +53,7 @@ int pop(Stack **head)
   return val;
 }
 
+// check if stack is empty
 bool isEmpty(Stack *head)
 {
   if(top == -1 || head == NULL)
@@ -62,6 +67,7 @@ bool isEmpty(Stack *head)
   }
 }
 
+// peek value at top of stack
 int peek(Stack *head)
 {
   if(isEmpty(head) == false)
