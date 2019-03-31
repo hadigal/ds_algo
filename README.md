@@ -14,3 +14,4 @@
 ## Algorithms
 1. Recurrsion
 2. Sorting
+3. Binary Search
