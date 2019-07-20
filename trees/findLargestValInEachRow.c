@@ -50,6 +50,7 @@ Node *pop(Node **queue,int *tf)
     return node;
 }
 
+// BFS approach
 int* largestValues(struct TreeNode* root, int* retSize)
 {
     if(root == NULL)
